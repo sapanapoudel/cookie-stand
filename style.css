@@ -1,0 +1,21 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: aqua;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+}
+table, th, td {
+  border: 1px solid black;
+  height: 200;
+  width: 300;
+}
