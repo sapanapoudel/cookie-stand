@@ -66,13 +66,3 @@ function header(){
 }
 header();
 
-var storeForm = document.getElementById('store-form');
-
-storeForm.addEventListener('submit', function(event){
-  event.preventDefault();
-  console.log(event);
-  console.log(event.target);
-  console.log(event.target.studentName);
-  console.log(event.target.studentName.value);
-  new Store(event.target.storeName.value, event.target.minCustomers.value, event.target.maxCustomers.value, event.target.avgCookie.value);
-});
