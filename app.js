@@ -7,17 +7,10 @@ function Store(location, minCustomers, maxCustomers, avgCookiePerCustomer){
   this.maxCustomers = maxCustomers;
   this.avgCookiePerCustomer = avgCookiePerCustomer;
   this.totalsPerHour = [];
-  Store.allStores.push(this);
+  // this.calculateTotalsPerDay();
+  // Store.allStores.push(this);
 }
-Store.allStores = [];
-
-//Creating new objects and storing them in allStores Array
-new Store ('1 st and Pike',23,65,6.3);
-new Store ('SeaTac', 3,24,1.2);
-new Store ('Seattle Center',3,24,2.3);
-new Store ('Capitol', 20,38,2.3);
-new Store ('Alki', 2,16,4.6);
-
+var allStores = [];
 
 //methods can be added to a constructor function's prototype
 Store.prototype.calculateCustomersPerOneHour = function(){
@@ -26,43 +19,78 @@ Store.prototype.calculateCustomersPerOneHour = function(){
   return customers;
 };
 
-Store.prototype.calculateCookiesSoldInOneHour = function(){
-  // multiply an amount of customers by the average amount of cookies
-  var customersInAnHour = this.calculateCustomersPerOneHour();
-  var cookies = this.avgCookiePerCustomer * customersInAnHour;
-  return Math.ceil(cookies);
-
-};
-
+//Calculate Cookie Sold in One Day
 Store.prototype.calculateTotalsPerDay = function(){
-  var total = 0;
+  var locationTotal = 0;
   for(var i = 0; i < 15; i++){
-    var totalInOneHour = this.calculateCookiesSoldInOneHour();
-    // console.log(totalInOneHour);
+    var totalInOneHour = Math.round(this.calculateCustomersPerOneHour() * this.avgCookiePerCustomer);
     this.totalsPerHour.push(totalInOneHour);
-    total += totalInOneHour;
+    console.log(totalInOneHour);
+    locationTotal += totalInOneHour;
   }
-  this.total = total;
-  // console.log(this.total);
+  this.totalsPerHour.push(locationTotal);
+  this.renderthis();
 };
 
-//Putting Data into Table
-//Making header
-function header(){
-  var StoreTableEl = document.getElementById('my-table');
+//Rendering for each object
+Store.prototype.renderthis = function() {
+  var tlEl = document.getElementById('my-table');
   var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  tdEl.textContent = '';
-  trEl.appendChild(tdEl);
-  for(var j = 0; j < 14; j++){
-    var td = document.createElement('td');
-    var hour = j + 6 + '00 ';
-    hour = hour.padStart(5, '0');
-    td.textContent = hour;
-    trEl.appendChild(td);
+  var tdEl = [];
+  tdEl[0] = document.createElement('td');
+  tdEl[0].textContent = this.location;
+
+  trEl.appendChild(tdEl[0]);
+  tlEl.appendChild(trEl);
+
+  for(var i = 0; i < this.totalsPerHour.length; i++) {
+    tdEl[i] = document.createElement('td');
+    tdEl[i].textContent = this.totalsPerHour[i];
+
+    trEl.appendChild(tdEl[i]);
+    tlEl.appendChild(trEl);
   }
+};
+var nextRow = -1;
 
-  StoreTableEl.appendChild(trEl);
+//Creating function to pass new store 
+function createStore(location, minCustomers, maxCustomers, avgCookiePerCustomer){
+  nextRow++;
+
+  allStores.push(new Store(location, minCustomers, maxCustomers, avgCookiePerCustomer));
+  allStores[nextRow].calculateTotalsPerDay();
 }
-header();
+// A refrence to the form element 
+var storeForm = document.getElementById('store-form');
 
+//Defining function called submitForm
+function submitForm(someEvent) {
+  someEvent.preventDefault();
+
+  var locationName = someEvent.target.storeName.value;
+  var minC = someEvent.target.minCustomer.value;
+  var maxC = someEvent.target.maxCustomer.value;
+  var avgC = someEvent.target.avgCookie.value;
+  createStore(locationName, parseInt(minC), parseInt(maxC), parseFloat(avgC));
+  // footer();
+}
+
+storeForm.addEventListener('submit', submitForm);
+
+function footer(){
+  var tlEl = document.getElementById('my-table');
+  var trEl = document.createElement('tr');
+  for(var i = 0; i < this.totalsPerHour.length; i++){
+    var total = 0;
+    for (var j = 0; j < allStores.length; j++){
+      total += allStores[j].totalsPerHour[i];
+    }
+    var tdEl = document.createElement('td');
+    tdEl.textContent = total;
+    trEl.appendChild(tdEl);
+    tlEl.appendChild(trEl);
+    // this.renderthis();
+  }
+}
+footer();
+// footer.renderthis();
