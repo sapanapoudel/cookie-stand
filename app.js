@@ -1,6 +1,4 @@
 'use strict';
-//Global Variables
-var StoreTableEl = document.getElementById('my-table');
 
 //Creating Constructor Store 
 function Store(location, minCustomers, maxCustomers, avgCookiePerCustomer){
@@ -20,6 +18,7 @@ new Store ('Seattle Center',3,24,2.3);
 new Store ('Capitol', 20,38,2.3);
 new Store ('Alki', 2,16,4.6);
 
+
 //methods can be added to a constructor function's prototype
 Store.prototype.calculateCustomersPerOneHour = function(){
   var customers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
@@ -33,7 +32,6 @@ Store.prototype.calculateCookiesSoldInOneHour = function(){
   var cookies = this.avgCookiePerCustomer * customersInAnHour;
   return Math.ceil(cookies);
 
-  // return this.calculateCustomersPerOneHour() * this.avgCookiesPerCustomer;
 };
 
 Store.prototype.calculateTotalsPerDay = function(){
@@ -49,42 +47,24 @@ Store.prototype.calculateTotalsPerDay = function(){
 };
 
 //Putting Data into Table
-Store.prototype.makeTable = function(){
-  if(this.totalsPerHour.length === 0){
-    this.calculateTotalsPerDay();
-  }
-
-  var locationTrEl = document.createElement('tr');
+//Making header
+function header(){
+  var StoreTableEl = document.getElementById('my-table');
+  var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
-  tdEl.textContent = 'Location';
-  locationTrEl.appendChild(tdEl);
-  for(var j = 0; j < this.totalsPerHour.length; j++){
-    tdEl = document.createElement('td');
+  tdEl.textContent = '';
+  trEl.appendChild(tdEl);
+  for(var j = 0; j < 14; j++){
+    var td = document.createElement('td');
     var hour = j + 6 + '00 ';
     hour = hour.padStart(5, '0');
-    tdEl.textContent = hour;
-    locationTrEl.appendChild(tdEl);
+    td.textContent = hour;
+    trEl.appendChild(td);
   }
-  tdEl = document.createElement('td');
-  tdEl.textContent = 'Total';
-  locationTrEl.appendChild(tdEl);
 
-  StoreTableEl.appendChild(locationTrEl);
-
-  // var tdEl = document.createElement('td');
-  // tdEl.textContent = this.location;
-  // locationTrEl.appendChild(tdEl);
-  // thEl.appendChild(hourLiEl);
-
-};
-
-Store.allStores[0].makeTable();
-// // //This page contain: 
-// function makePage(){
-//   this.makeTable();
-// }
-
-// makePage();
+  StoreTableEl.appendChild(trEl);
+}
+header();
 
 var storeForm = document.getElementById('store-form');
 
