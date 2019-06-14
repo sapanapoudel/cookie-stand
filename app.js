@@ -48,12 +48,20 @@ Store.prototype.renderthis = function () {
     tlEl.appendChild(trEl);
   }
   
+  //putting Total
+  if (document.getElementById('total-row')){
+    document.getElementById('total-row').remove();
+  }
   trEl = document.createElement('tr');
+  trEl.setAttribute('id', 'total-row');
   tdEl[0] = document.createElement('td');
   tdEl[0].textContent = 'Total';
+
+
   trEl.appendChild(tdEl[0]);
   tlEl.appendChild(trEl);
 
+  //any time we build a total row we give it an id of "total-row"
   // var total = 0;
   // tdEl[i] = document.createElement('td');
   for (var k = 0; k < 15; k++) {
