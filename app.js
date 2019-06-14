@@ -80,7 +80,7 @@ storeForm.addEventListener('submit', submitForm);
 function footer(){
   var tlEl = document.getElementById('my-table');
   var trEl = document.createElement('tr');
-  for(var i = 0; i < this.totalsPerHour.length; i++){
+  for(var i = 0; i < 15; i++){
     var total = 0;
     for (var j = 0; j < allStores.length; j++){
       total += allStores[j].totalsPerHour[i];
