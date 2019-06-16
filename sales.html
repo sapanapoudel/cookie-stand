@@ -1,49 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+   <title>Salmon Cookies</title>
 </head>
-
 <body>
-  <header>
-    <nav>
-      <ul>
+  </div>
+  <h1> Salmon Cookies </h1>
+<div>
+<ul>
+    <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="sales.html">Sales</a></li>
+        <li><a href="sale.html">Sale</a></li>
       </ul>
-    </nav>
-  </header>
+</ul>
+</div>
+  <form id ='cookieform'>
+    <fieldset>
+      location Name<input type="text" name ="locName">
+      Minimum Customer  <input type = "number" name ="min">
+      Maximum Customer  <input type = "number" name ="max">
+      Average Cookie <input type = "number" name ="avg">
+      <button type='submit'> Submit
+      </button>
+    </fieldset>
+  </form>
+</form>
 
-  <main>
-      <img src="https://raw.githubusercontent.com/codefellows/seattle-201d57/master/class-06/lab/assets/salmon.png">
-    <table id="my-table">
-    </table>
-
-    <form id="store-form">
-      <fieldset>
-        <legend>Store Form</legend>
-        <label for="store-name">Store name</label>
-        <input name="storeName" type="text"></br>
-        <label for="min-customer">Min Customer</label>
-        <input name="minCustomer" type="text"></br>
-        <label for="max-customer">Max Customer</label>
-        <input name="maxCustomer" type="text"></br>
-        <label for="avg-cookie">Avg Cookie Sale</label>
-        <input name="avgCookie" type="text"></br>
-   
-        <button type="submit">Submit</button>
-      </fieldset>
-    </form>
-   
-  </main>
-
-  <script src="app.js"></script>
+<table id="tabl">
+</table>
+  <script src ="app.js"></script>
 </body>
-
 </html>
