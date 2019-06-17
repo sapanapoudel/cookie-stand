@@ -117,7 +117,67 @@ fieldset > button:hover {
   transition-delay: 100ms;
   cursor: pointer;
 }
+#main-img img {
+  display: block;
+  margin: 0px auto;
+}
+#article  {
+  margin-top: 25px;
+  margin-bottom: 60px;
+}
+section h1 {
+  color:maroon;
+  font-size: 20px;
+  font-style: oblique;
+}
+article p {
+  text-indent: 20px;
+}
+#hours {
+  margin-bottom: 40px;
+}
+#hours > section  h2  {
+  color:maroon;
+  font-size: 20px;
+  font-style: oblique;
+}
+#hours > section > img {
+  height:150px;
+  width: 150px;
+  float: right;
+}
 
+#hours > section  p  {
+  color: red;
+  font-size: 20px;
+  font-style: oblique;
+}
+#gift-store {
+  margin-bottom: 150px;
+}
+
+#gift-store h2 {
+  color:maroon;
+  font-size: 20px;
+  font-style: oblique;
+  text-align: center;
+}
+#gift-store h3 {
+  color: rgb(215, 26, 58);
+}
+#gift-store img {
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+#contact {
+  margin-bottom: 40px;
+}
+#location h2{
+  color:maroon;
+  font-size: 20px;
+  font-style: oblique;
+}
 footer p {
   text-align: center;
 }
