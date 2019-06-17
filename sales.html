@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-   <title>Salmon Cookies</title>
-</head>
-<body>
-  </div>
-  <h1> Salmon Cookies </h1>
-<div>
-<ul>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sale.html">Sale</a></li>
-      </ul>
-</ul>
-</div>
-  <form id ='cookieform'>
-    <fieldset>
-      location Name<input type="text" name ="locName">
-      Minimum Customer  <input type = "number" name ="min">
-      Maximum Customer  <input type = "number" name ="max">
-      Average Cookie <input type = "number" name ="avg">
-      <button type='submit'> Submit
-      </button>
-    </fieldset>
-  </form>
-</form>
 
-<table id="tabl">
-</table>
-  <script src ="app.js"></script>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="reset.css">
+
+  <title>Salmon Cookies</title>
+</head>
+
+<body>
+  <div id="outer-div">
+    <header>
+      <div id="logo-div">
+        <img src="./img/frosted-cookie.jpg">
+        <p id="header-p1">SALMON COOKIE STORE</p>
+        <p id="header-p2">Taste it, live it</p>
+      </div>
+    </header>
+
+    <main>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sales.html">Sale</a></li>
+        </ul>
+      </nav>
+
+      <div id="table">
+        <img src="img/fish.jpg">
+        <h1>Table for Salmon-Cookie Store </h1>
+
+        <table id="tabl">
+        </table>
+      </div>
+
+      <div id="form">
+        <form id='cookieform'>
+          <fieldset>
+            <legend>Salmon-Cookie Store Form</legend></br>
+            location Name<input type="text" name="locName">
+            Minimum Customer <input type="number" name="min">
+            Maximum Customer <input type="number" name="max">
+            Average Cookie <input type="number" name="avg">
+            <button type='submit'> Submit
+            </button>
+          </fieldset>
+        </form>
+
+      </div>
+
+    </main>
+
+    <footer>
+      <p>Salmon-Cookie © 2019 . All Rights Reserved.</p>
+
+    </footer>
+    <script src="app.js"></script>
+  </div>
 </body>
+
 </html>
