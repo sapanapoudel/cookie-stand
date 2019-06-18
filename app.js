@@ -6,7 +6,7 @@ var allStores = [];
 var hourList = ['6am','7am','8am', '9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 
 //Creating constructor function named CookieStore
-function Store (location, mincustomer, maxCustomer, avgCookieSale) { 
+function Store (location, mincustomer, maxCustomer, avgCookieSale) {
   this.minCustPerHour = mincustomer;
   this.maxCustPerHour = maxCustomer;
   this.avgCookieSale = avgCookieSale;
@@ -23,7 +23,7 @@ new Store ('Seattle Center', 3, 24, 2.3);
 new Store ('Capitol Hill', 20, 38, 2.3);
 new Store ('Alki', 2, 16, 4.6);
 
-//Populate customer and sales per hour 
+//Populate customer and sales per hour
 function fillCustomerandSales(){
   for (var i = 0; i < allStores.length; i++){
     popCustomer(allStores[i]);
@@ -31,14 +31,14 @@ function fillCustomerandSales(){
   }
 }
 
-//Calculating customer per each hour 
+//Calculating customer per each hour
 function popCustomer(store){
   for (var i = 0; i < hourList.length; i++){
     (store.custEachHour[i] = Math.floor(Math.random() * (store.maxCustPerHour - store.minCustPerHour + 1)) + store.minCustPerHour);
   }
 }
 
-//calculating cookie sold 
+//calculating cookie sold
 function popSales(store){
   for(var i =0; i<hourList.length; i++){
     store.cookiesEachHr[i] = Math.ceil(store.custEachHour[i] * store.avgCookieSale);
@@ -46,7 +46,7 @@ function popSales(store){
   }
 }
 
-//Create a header for the table 
+//Create a header for the table
 function header(){
   var salesTable = document.getElementById('tabl');
   var trE1 = document.createElement('tr');
@@ -67,7 +67,7 @@ function header(){
   salesTable.appendChild(trE1);
 }
 
-//Create a body for the table 
+//Create a body for the table
 function body(store) {
   var salesTable = document.getElementById('tabl');
   var trE1 = document.createElement('tr');
@@ -87,7 +87,7 @@ function body(store) {
   salesTable.appendChild(trE1);
 }
 
-//Calculate each hour total 
+//Calculate each hour total
 function calculateEachHrLoc(trE1) {
   var sum = 0;
   var totalsale = 0;
@@ -152,7 +152,7 @@ function handleDataSubmit(e){
 
   console.log(newStore);
 
-  //clear previous table 
+  //clear previous table
   while(parent.hasChildNodes()){
     parent.removeChild(parent.firstChild);
   }
